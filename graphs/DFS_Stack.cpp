@@ -29,9 +29,13 @@ void printHelper(vector<vector<int> > &edges, int n, int startIndex, vector<bool
     }
 }
 
-void print(vector<vector<int> > &edges, int n, int startIndex) {
+void print(vector<vector<int> > &edges, int n) {
     vector<bool> visited(n, false);
-    printHelper(edges, n, startIndex, visited);
+    for(int i = 0;i < n;i++) {
+        if(!visited[i]) {
+            printHelper(edges, n, i, visited);
+        }
+    }
 }
 
 int main() {
@@ -47,5 +51,5 @@ int main() {
         edges[second][first] = 1;
     }
 
-    print(edges, n, 0);
+    print(edges, n);
 }
